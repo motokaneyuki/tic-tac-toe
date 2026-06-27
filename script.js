@@ -18,16 +18,25 @@ const game = {
     ],
 
     checkBoard: () => {
-        function winner(playerLetter){
-            if (playerLetter = 'x'){
+        function winner(result){
+            if (result == 'x'){
                 console.log('x wins');
                 player.one.score ++;
                 console.log(player.one.score);
                 console.log(player.two.score);
                 game.clearBoard();
-            } else (playerLetter = 'o'){
+            } 
+            
+            if (result == 'o'){
                 console.log('o wins');
                 player.two.score ++;
+                console.log(player.one.score);
+                console.log(player.two.score);
+                game.clearBoard();
+            }
+
+            if (result == 'tie'){
+                console.log('its a tie');
                 console.log(player.one.score);
                 console.log(player.two.score);
                 game.clearBoard();
@@ -71,7 +80,11 @@ const game = {
             winner('o');
         } else if ((game.board[2] == 'o') && (game.board[4] == 'o') && (game.board[6] == 'o')){
             winner('o');
-        } else {console.log('next turn')};
+        } else if (game.board.every(Boolean)){
+            winner('tie');
+        } else {
+            console.log('next turn');
+        };
     },
 
     clearBoard: () => {
