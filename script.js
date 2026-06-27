@@ -12,9 +12,9 @@ const player = {
 
 const game = {
     board: [
-        'x', 'x', 'x', // 0, 1, 2
-        'o', 'o', 'x', // 3, 4, 5
-        'x', 'o', 'o' // 6, 7, 8
+        '', '', '', // 0, 1, 2
+        '', '', '', // 3, 4, 5
+        '', '', '' // 6, 7, 8
     ],
 
     checkBoard: () => {
@@ -75,3 +75,25 @@ const game = {
     }
  
 }
+
+function markX(location) {
+    if (game.board[location]){
+        return console.log('already filled, please try another');
+    }
+    game.board[location] = 'x';
+    console.log(game.board);
+    console.log(`It is now ${player.two.name}'s turn`);
+    game.checkBoard();
+}
+
+function markO(location) {
+    if (game.board[location]){
+        return console.log('already filled, please try another');
+    }
+    game.board[location] = 'o';
+    console.log(game.board);
+    console.log(`It is now ${player.one.name}'s turn`);
+    game.checkBoard();
+}
+
+console.log(game.board);
