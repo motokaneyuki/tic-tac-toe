@@ -59,7 +59,7 @@ const game = {
         } 
         //vertical wins 
         else if ((game.board[0] == 'x') && (game.board[3] == 'x') && (game.board[6] == 'x')){
-            cwinner('x');
+            winner('x');
         } else if ((game.board[1] == 'x') && (game.board[4] == 'x') && (game.board[7] == 'x')){
             winner('x');
         } else if ((game.board[2] == 'x') && (game.board[5] == 'x') && (game.board[8] == 'x')){
