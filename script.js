@@ -22,56 +22,79 @@ const game = {
         if ((game.board[0] == 'x') && (game.board[1] == 'x') && (game.board[2] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[3] == 'x') && (game.board[4] == 'x') && (game.board[5] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[6] == 'x') && (game.board[7] == 'x') && (game.board[8] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[0] == 'o') && (game.board[1] == 'o') && (game.board[2] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         } else if ((game.board[3] == 'o') && (game.board[4] == 'o') && (game.board[5] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         } else if ((game.board[6] == 'o') && (game.board[7] == 'o') && (game.board[8] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         } 
         //vertical wins 
         else if ((game.board[0] == 'x') && (game.board[3] == 'x') && (game.board[6] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[1] == 'x') && (game.board[4] == 'x') && (game.board[7] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[2] == 'x') && (game.board[5] == 'x') && (game.board[8] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[0] == 'o') && (game.board[3] == 'o') && (game.board[6] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         } else if ((game.board[1] == 'o') && (game.board[4] == 'o') && (game.board[7] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         } else if ((game.board[2] == 'o') && (game.board[5] == 'o') && (game.board[8] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         }
         //diagonal wins
         else if ((game.board[0] == 'x') && (game.board[4] == 'x') && (game.board[8] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[2] == 'x') && (game.board[4] == 'x') && (game.board[6] == 'x')){
             console.log('x wins');
             player.one.score ++;
+            game.clearBoard();
         } else if ((game.board[0] == 'o') && (game.board[4] == 'o') && (game.board[8] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         } else if ((game.board[2] == 'o') && (game.board[4] == 'o') && (game.board[6] == 'o')){
             console.log('o wins');
             player.two.score ++;
+            game.clearBoard();
         } else {console.log('next turn')};
+    },
+
+    clearBoard: () => {
+        for (let i = 0; i < 9; i++){
+            game.board[i] = '';
+        }
+        console.log(game.board);
     }
  
 }
