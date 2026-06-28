@@ -185,8 +185,17 @@ const display = {
         playerTwo.classList.add('playerTwo');
         playerTwo.innerText = player.two.name + ' - ' + player.two.score;
         score.appendChild(playerTwo);
+    },
+
+    showStartGame: () => {
+        const startGame = document.querySelector('.startGame');
+        const startGameButton = document.createElement('button');
+        startGameButton.classList.add('startGameButton');
+        startGameButton.innerText = 'Start Game';
+        startGame.appendChild(startGameButton);
     }
 }
 
 display.showBoard();
-display.showPlayers();
+// display.showPlayers();
+display.showStartGame();
