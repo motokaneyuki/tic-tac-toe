@@ -12,9 +12,9 @@ const player = {
 
 const game = {
     board: [
-        '', '', '', // 0, 1, 2
-        '', '', '', // 3, 4, 5
-        '', '', '' // 6, 7, 8
+        'x', 'x', 'o', // 0, 1, 2
+        'o', 'o', 'x', // 3, 4, 5
+        'x', 'o', 'x' // 6, 7, 8
     ],
 
     checkBoard: () => {
@@ -117,3 +117,56 @@ function markO(location) {
 }
 
 console.log(game.board);
+
+const display = {
+    showBoard: () => {
+        const container = document.querySelector('.container');
+
+        const boardTopLeft = document.createElement('div');
+        boardTopLeft.classList.add('boardBox');
+        boardTopLeft.innerText = game.board[0];
+        container.appendChild(boardTopLeft);
+
+        const boardTopMiddle = document.createElement('div');
+        boardTopMiddle.classList.add('boardBox');
+        boardTopMiddle.innerText = game.board[1];
+        container.appendChild(boardTopMiddle);
+
+        const boardTopRight = document.createElement('div');
+        boardTopRight.classList.add('boardBox');
+        boardTopRight.innerText = game.board[2];
+        container.appendChild(boardTopRight);
+
+        const boardMiddleLeft = document.createElement('div');
+        boardMiddleLeft.classList.add('boardBox');
+        boardMiddleLeft.innerText = game.board[3];
+        container.appendChild(boardMiddleLeft);
+
+        const boardMiddleMiddle = document.createElement('div');
+        boardMiddleMiddle.classList.add('boardBox');
+        boardMiddleMiddle.innerText = game.board[4];
+        container.appendChild(boardMiddleMiddle);
+
+        const boardMiddleRight = document.createElement('div');
+        boardMiddleRight.classList.add('boardBox');
+        boardMiddleRight.innerText = game.board[5];
+        container.appendChild(boardMiddleRight);
+
+        const boardBottomLeft = document.createElement('div');
+        boardBottomLeft.classList.add('boardBox');
+        boardBottomLeft.innerText = game.board[6];
+        container.appendChild(boardBottomLeft);
+
+        const boardBottomMiddle = document.createElement('div');
+        boardBottomMiddle.classList.add('boardBox');
+        boardBottomMiddle.innerText = game.board[7];
+        container.appendChild(boardBottomMiddle);
+
+        const boardBottomRight = document.createElement('div');
+        boardBottomRight.classList.add('boardBox');
+        boardBottomRight.innerText = game.board[8];
+        container.appendChild(boardBottomRight);
+    }
+}
+
+display.showBoard();
