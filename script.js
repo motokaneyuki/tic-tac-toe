@@ -185,6 +185,11 @@ const display = {
         playerTwo.classList.add('playerTwo');
         playerTwo.innerText = player.two.name + ' - ' + player.two.score;
         score.appendChild(playerTwo);
+
+        const playerTurn = document.createElement('div');
+        playerTurn.classList.add('playerTurn');
+        playerTurn.innerText = player.one.name + `'s turn...`;
+        score.appendChild(playerTurn);
     },
 
     showStartGame: () => {
@@ -193,9 +198,13 @@ const display = {
         startGameButton.classList.add('startGameButton');
         startGameButton.innerText = 'Start Game';
         startGame.appendChild(startGameButton);
+
+        startGameButton.addEventListener('click', () => {
+            display.showPlayers();
+            startGameButton.classList.add('hidden');
+        })
     }
 }
 
 display.showBoard();
-// display.showPlayers();
 display.showStartGame();
