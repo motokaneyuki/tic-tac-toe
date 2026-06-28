@@ -170,7 +170,22 @@ const display = {
         boardBottomRight.classList.add('boardBox');
         boardBottomRight.innerText = game.board[8];
         container.appendChild(boardBottomRight);
+    },
+
+    showPlayers: () => {
+        const score = document.querySelector('.score');
+
+        const playerOne = document.createElement('div');
+        playerOne.classList.add('playerOne');
+        playerOne.innerText = player.one.name + ' - ' + player.one.score;
+        score.appendChild(playerOne);
+
+        const playerTwo = document.createElement('div');
+        playerTwo.classList.add('playerTwo');
+        playerTwo.innerText = player.two.name + ' - ' + player.two.score;
+        score.appendChild(playerTwo);
     }
 }
 
 display.showBoard();
+display.showPlayers();

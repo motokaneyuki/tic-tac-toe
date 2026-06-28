@@ -22,10 +22,29 @@ h1 {
 .score {
     padding-top: 50px;
     font-size: 25px;
+    letter-spacing: 10px;
     font-family: 'pixelFont';
     text-align: center;
-    padding-right: 250px;
     color: palevioletred;
+    display: grid;
+}
+
+.playerOne {
+    font-family: 'pixelFont';
+    color: paleturquoise;
+    font-size: 25px;
+    letter-spacing: 2px;
+    padding-top: 30px;
+    padding-right: 250px;
+}
+
+.playerTwo {
+    font-family: 'pixelFont';
+    color: palegoldenrod;
+    font-size: 25px;
+    letter-spacing: 2px;
+    padding-top: 30px;
+    padding-right: 250px;
 }
 
 .container {
