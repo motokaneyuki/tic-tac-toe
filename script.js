@@ -129,6 +129,7 @@ const display = {
 
         const boardTopMiddle = document.createElement('div');
         boardTopMiddle.classList.add('boardBox');
+        boardTopMiddle.classList.add('topMiddle');
         boardTopMiddle.innerText = game.board[1];
         container.appendChild(boardTopMiddle);
 
@@ -139,6 +140,7 @@ const display = {
 
         const boardMiddleLeft = document.createElement('div');
         boardMiddleLeft.classList.add('boardBox');
+        boardMiddleLeft.classList.add('middleLeft');
         boardMiddleLeft.innerText = game.board[3];
         container.appendChild(boardMiddleLeft);
 
@@ -149,6 +151,7 @@ const display = {
 
         const boardMiddleRight = document.createElement('div');
         boardMiddleRight.classList.add('boardBox');
+        boardMiddleRight.classList.add('middleRight');
         boardMiddleRight.innerText = game.board[5];
         container.appendChild(boardMiddleRight);
 
@@ -159,6 +162,7 @@ const display = {
 
         const boardBottomMiddle = document.createElement('div');
         boardBottomMiddle.classList.add('boardBox');
+        boardBottomMiddle.classList.add('bottomMiddle');
         boardBottomMiddle.innerText = game.board[7];
         container.appendChild(boardBottomMiddle);
 

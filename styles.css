@@ -1,9 +1,31 @@
-.boardBox {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: x-large;
+@font-face {
+    font-family: 'pixelFont';
+    src: url(fonts/StWinterPixel24DemoRegular-RpV73.otf);
+}
+
+@font-face {
+    font-family: 'roundFont';
+    src: url(fonts/VarelaRound-624M.ttf);
+}
+
+body {
+    background-color: #1a1a1a;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: 'pixelFont';
+    text-align: center;
+    color: palevioletred;
+}
+
+.score {
+    padding-top: 50px;
+    font-size: 25px;
+    font-family: 'pixelFont';
+    text-align: center;
+    padding-right: 250px;
+    color: palevioletred;
 }
 
 .container {
@@ -11,4 +33,37 @@
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
     justify-content: center;
+}
+
+.boardBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-family: 'roundFont';
+    color: #fff;
+}
+
+.topMiddle {
+    border-left: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+}
+
+.middleLeft {
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+}
+
+.middleRight {
+    border-left: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+    border-top: 1px solid whitesmoke;
+}
+
+.bottomMiddle {
+    border-left: 1px solid whitesmoke;
+    border-top: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
 }
