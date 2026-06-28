@@ -12,9 +12,9 @@ const player = {
 
 const game = {
     board: [
-        'x', 'x', 'o', // 0, 1, 2
-        'o', 'o', 'x', // 3, 4, 5
-        'x', 'o', 'x' // 6, 7, 8
+        '', '', '', // 0, 1, 2
+        '', '', '', // 3, 4, 5
+        '', '', '' // 6, 7, 8
     ],
 
     checkBoard: () => {
@@ -170,6 +170,85 @@ const display = {
         boardBottomRight.classList.add('boardBox');
         boardBottomRight.innerText = game.board[8];
         container.appendChild(boardBottomRight);
+
+        //event listeners
+
+        function refreshBoard() {
+            container.replaceChildren();
+            display.showBoard();
+        }
+
+        function showStart(){
+            const startGame = document.querySelector('.startGame');
+            const startGameButton = document.createElement('button');
+            startGameButton.classList.add('startGameButton');
+            startGameButton.innerText = 'Start Game';
+            startGame.appendChild(startGameButton);
+
+            startGameButton.addEventListener('click', () => {
+                display.showPlayers();
+                startGameButton.remove();
+                container.classList.add('startHidden');
+            })
+        }
+
+        if (!container.classList.contains('startHidden')){
+            showStart();
+        }
+
+        function markArea(location){
+            if (!container.classList.contains('startHidden')) return;
+            if (container.classList.contains('turnO')){
+                if (game.board[location]){
+                    return alert('already filled, please try another spot');
+                }
+                markO(location);
+            } else {
+                if (game.board[location]){
+                    return alert('already filled, please try another spot');
+                }
+                markX(location);
+            }
+
+            refreshBoard();
+            container.classList.toggle('turnO');
+        }
+
+        boardTopLeft.addEventListener('click', () => {
+            markArea(0);
+        })
+
+        boardTopMiddle.addEventListener('click', () => {
+            markArea(1);
+        })
+
+        boardTopRight.addEventListener('click', () => {
+            markArea(2);
+        })
+
+        boardMiddleLeft.addEventListener('click', () => {
+            markArea(3);
+        })
+
+        boardMiddleMiddle.addEventListener('click', () => {
+            markArea(4);
+        })
+
+        boardMiddleRight.addEventListener('click', () => {
+            markArea(5);
+        })
+
+        boardBottomLeft.addEventListener('click', () => {
+            markArea(6);
+        })
+
+        boardBottomMiddle.addEventListener('click', () => {
+            markArea(7);
+        })
+
+        boardBottomRight.addEventListener('click', () => {
+            markArea(8);
+        })
     },
 
     showPlayers: () => {
@@ -191,20 +270,6 @@ const display = {
         playerTurn.innerText = player.one.name + `'s turn...`;
         score.appendChild(playerTurn);
     },
-
-    showStartGame: () => {
-        const startGame = document.querySelector('.startGame');
-        const startGameButton = document.createElement('button');
-        startGameButton.classList.add('startGameButton');
-        startGameButton.innerText = 'Start Game';
-        startGame.appendChild(startGameButton);
-
-        startGameButton.addEventListener('click', () => {
-            display.showPlayers();
-            startGameButton.classList.add('hidden');
-        })
-    }
 }
 
 display.showBoard();
-display.showStartGame();
