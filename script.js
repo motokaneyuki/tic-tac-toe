@@ -174,6 +174,7 @@ const display = {
 
     showPlayers: () => {
         const score = document.querySelector('.score');
+        score.innerText = 'score:';
 
         const playerOne = document.createElement('div');
         playerOne.classList.add('playerOne');
