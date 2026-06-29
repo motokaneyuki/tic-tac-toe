@@ -24,7 +24,7 @@ const game = {
                 player.one.score ++;
                 console.log(player.one.score);
                 console.log(player.two.score);
-                game.clearBoard();
+                // game.clearBoard();
             } 
             
             if (result == 'o'){
@@ -32,14 +32,14 @@ const game = {
                 player.two.score ++;
                 console.log(player.one.score);
                 console.log(player.two.score);
-                game.clearBoard();
+                // game.clearBoard();
             }
 
             if (result == 'tie'){
                 console.log('its a tie');
                 console.log(player.one.score);
                 console.log(player.two.score);
-                game.clearBoard();
+                // game.clearBoard();
             }
         }
 
@@ -171,11 +171,24 @@ const display = {
         boardBottomRight.innerText = game.board[8];
         container.appendChild(boardBottomRight);
 
-        //event listeners
+        const turn = document.querySelector('.turn');
+        function showTurn() {
+            const playerTurn = document.createElement('div');
+            playerTurn.classList.add('playerTurn');
+            if (!container.classList.contains('turnO')){
+                playerTurn.innerText = player.two.name + `'s turn...`;
+            }
+            if (container.classList.contains('turnO')){
+                playerTurn.innerText = player.one.name + `'s turn...`;
+            }
+            turn.appendChild(playerTurn);
+        }
 
         function refreshBoard() {
             container.replaceChildren();
             display.showBoard();
+            turn.replaceChildren();
+            showTurn();
         }
 
         function showStart(){
@@ -194,7 +207,7 @@ const display = {
 
         if (!container.classList.contains('startHidden')){
             showStart();
-        }
+        } 
 
         function markArea(location){
             if (!container.classList.contains('startHidden')) return;
@@ -264,11 +277,6 @@ const display = {
         playerTwo.classList.add('playerTwo');
         playerTwo.innerText = player.two.name + ' - ' + player.two.score;
         score.appendChild(playerTwo);
-
-        const playerTurn = document.createElement('div');
-        playerTurn.classList.add('playerTurn');
-        playerTurn.innerText = player.one.name + `'s turn...`;
-        score.appendChild(playerTurn);
     },
 }
 

@@ -62,6 +62,11 @@ h1 {
 
 .playerTurn {
     padding-top: 15px;
+    font-size: 15px;
+    letter-spacing: 10px;
+    font-family: 'pixelFont';
+    text-align: center;
+    color: palevioletred;
 }
 
 .playerOne {
