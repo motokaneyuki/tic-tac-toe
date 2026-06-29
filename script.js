@@ -122,54 +122,47 @@ const display = {
     showBoard: () => {
         const container = document.querySelector('.container');
 
+        function createBoardBox(location, number){
+            location.classList.add('boardBox');
+            location.innerText = game.board[number];
+            if (location.textContent == 'x'){
+                location.style.color = 'paleturquoise';
+            } else {
+                location.style.color = 'palegoldenrod';
+            }  
+            container.appendChild(location);
+        }
+        
         const boardTopLeft = document.createElement('div');
-        boardTopLeft.classList.add('boardBox');
-        boardTopLeft.innerText = game.board[0];
-        container.appendChild(boardTopLeft);
+        createBoardBox(boardTopLeft, 0);
 
         const boardTopMiddle = document.createElement('div');
-        boardTopMiddle.classList.add('boardBox');
         boardTopMiddle.classList.add('topMiddle');
-        boardTopMiddle.innerText = game.board[1];
-        container.appendChild(boardTopMiddle);
+        createBoardBox(boardTopMiddle, 1);
 
         const boardTopRight = document.createElement('div');
-        boardTopRight.classList.add('boardBox');
-        boardTopRight.innerText = game.board[2];
-        container.appendChild(boardTopRight);
+        createBoardBox(boardTopRight, 2);
 
         const boardMiddleLeft = document.createElement('div');
-        boardMiddleLeft.classList.add('boardBox');
         boardMiddleLeft.classList.add('middleLeft');
-        boardMiddleLeft.innerText = game.board[3];
-        container.appendChild(boardMiddleLeft);
+        createBoardBox(boardMiddleLeft, 3);
 
         const boardMiddleMiddle = document.createElement('div');
-        boardMiddleMiddle.classList.add('boardBox');
-        boardMiddleMiddle.innerText = game.board[4];
-        container.appendChild(boardMiddleMiddle);
-
+        createBoardBox(boardMiddleMiddle, 4);
+        
         const boardMiddleRight = document.createElement('div');
-        boardMiddleRight.classList.add('boardBox');
         boardMiddleRight.classList.add('middleRight');
-        boardMiddleRight.innerText = game.board[5];
-        container.appendChild(boardMiddleRight);
+        createBoardBox(boardMiddleRight, 5);
 
         const boardBottomLeft = document.createElement('div');
-        boardBottomLeft.classList.add('boardBox');
-        boardBottomLeft.innerText = game.board[6];
-        container.appendChild(boardBottomLeft);
+        createBoardBox(boardBottomLeft, 6);
 
         const boardBottomMiddle = document.createElement('div');
-        boardBottomMiddle.classList.add('boardBox');
         boardBottomMiddle.classList.add('bottomMiddle');
-        boardBottomMiddle.innerText = game.board[7];
-        container.appendChild(boardBottomMiddle);
+        createBoardBox(boardBottomMiddle, 7);
 
         const boardBottomRight = document.createElement('div');
-        boardBottomRight.classList.add('boardBox');
-        boardBottomRight.innerText = game.board[8];
-        container.appendChild(boardBottomRight);
+        createBoardBox(boardBottomRight, 8);
 
         const turn = document.querySelector('.turn');
         function showTurn() {
