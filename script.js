@@ -8,6 +8,8 @@ const player = {
         name: "Player Two", //o
         score: 0
     },
+
+    newGame: 'no'
 }
 
 const game = {
@@ -19,9 +21,23 @@ const game = {
 
     checkBoard: () => {
         function winner(result){
+            const winnerDialog = document.querySelector('#winnerDialog');
+            const winnerName = document.querySelector('.winnerName');
+            const continueButton = document.querySelector('.continueButton');
+
+            continueButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                winnerDialog.close();
+                game.clearBoard();
+                player.newGame = 'yes';
+                display.showBoard();
+            })
+
             if (result == 'x'){
                 console.log('x wins');
                 player.one.score ++;
+                winnerName.innerText = player.one.name + ' wins!';
+                winnerDialog.showModal();
                 console.log(player.one.score);
                 console.log(player.two.score);
                 // game.clearBoard();
@@ -30,6 +46,8 @@ const game = {
             if (result == 'o'){
                 console.log('o wins');
                 player.two.score ++;
+                winnerName.innerText = player.two.name + ' wins!';
+                winnerDialog.showModal();
                 console.log(player.one.score);
                 console.log(player.two.score);
                 // game.clearBoard();
@@ -37,6 +55,8 @@ const game = {
 
             if (result == 'tie'){
                 console.log('its a tie');
+                winnerName.innerText = `It's a tie!`;
+                winnerDialog.showModal();
                 console.log(player.one.score);
                 console.log(player.two.score);
                 // game.clearBoard();
@@ -183,6 +203,11 @@ const display = {
             display.showPlayers();
             turn.replaceChildren();
             showTurn();
+        }
+
+        if (player.newGame == 'yes'){
+            player.newGame = 'no';
+            refreshBoard();
         }
 
         function showStart(){
