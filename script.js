@@ -180,6 +180,7 @@ const display = {
         function refreshBoard() {
             container.replaceChildren();
             display.showBoard();
+            display.showPlayers();
             turn.replaceChildren();
             showTurn();
         }
