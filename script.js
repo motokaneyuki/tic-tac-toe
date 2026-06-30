@@ -9,7 +9,8 @@ const player = {
         score: 0
     },
 
-    newGame: 'no'
+    newGame: 'no',
+    turn: 'x',
 }
 
 const game = {
@@ -34,32 +35,20 @@ const game = {
             })
 
             if (result == 'x'){
-                console.log('x wins');
                 player.one.score ++;
                 winnerName.innerText = player.one.name + ' wins!';
                 winnerDialog.showModal();
-                console.log(player.one.score);
-                console.log(player.two.score);
-                // game.clearBoard();
             } 
             
             if (result == 'o'){
-                console.log('o wins');
                 player.two.score ++;
                 winnerName.innerText = player.two.name + ' wins!';
                 winnerDialog.showModal();
-                console.log(player.one.score);
-                console.log(player.two.score);
-                // game.clearBoard();
             }
 
             if (result == 'tie'){
-                console.log('its a tie');
                 winnerName.innerText = `It's a tie!`;
                 winnerDialog.showModal();
-                console.log(player.one.score);
-                console.log(player.two.score);
-                // game.clearBoard();
             }
         }
 
@@ -102,41 +91,16 @@ const game = {
             winner('o');
         } else if (game.board.every(Boolean)){
             winner('tie');
-        } else {
-            console.log('next turn');
-        };
+        } 
     },
 
     clearBoard: () => {
         for (let i = 0; i < 9; i++){
             game.board[i] = '';
         }
-        console.log(game.board);
     }
  
 }
-
-function markX(location) {
-    if (game.board[location]){
-        return console.log('already filled, please try another');
-    }
-    game.board[location] = 'x';
-    console.log(game.board);
-    console.log(`It is now ${player.two.name}'s turn`);
-    game.checkBoard();
-}
-
-function markO(location) {
-    if (game.board[location]){
-        return console.log('already filled, please try another');
-    }
-    game.board[location] = 'o';
-    console.log(game.board);
-    console.log(`It is now ${player.one.name}'s turn`);
-    game.checkBoard();
-}
-
-console.log(game.board);
 
 const display = {
     showBoard: () => {
@@ -188,26 +152,38 @@ const display = {
         function showTurn() {
             const playerTurn = document.createElement('div');
             playerTurn.classList.add('playerTurn');
-            if (!container.classList.contains('turnO')){
+            if (player.turn == 'o'){
                 playerTurn.innerText = player.two.name + `'s turn...`;
-            }
-            if (container.classList.contains('turnO')){
+            } else {
                 playerTurn.innerText = player.one.name + `'s turn...`;
             }
             turn.appendChild(playerTurn);
         }
+
+        const turnDialog = document.querySelector('#turnDialog');
+        const turnName = document.querySelector('.turnName');
+        const playButton = document.querySelector('.playButton');
+        playButton.addEventListener('click', () => {
+            turnDialog.close();
+            display.showPlayers();
+        })
 
         function refreshBoard() {
             container.replaceChildren();
             display.showBoard();
             display.showPlayers();
             turn.replaceChildren();
-            showTurn();
         }
 
         if (player.newGame == 'yes'){
             player.newGame = 'no';
             refreshBoard();
+            if (player.turn == 'x'){
+                turnName.innerText = `${player.one.name} goes first!`;
+            } else {
+                turnName.innerText = `${player.two.name} goes first!`;
+            }
+            turnDialog.showModal();
         }
 
         function showStart(){
@@ -218,9 +194,10 @@ const display = {
             startGame.appendChild(startGameButton);
 
             startGameButton.addEventListener('click', () => {
-                display.showPlayers();
                 startGameButton.remove();
                 container.classList.add('startHidden');
+                turnName.innerText = `${player.one.name} goes first!`;
+                turnDialog.showModal();
             })
         }
 
@@ -228,9 +205,19 @@ const display = {
             showStart();
         } 
 
+        function markX(location) {
+            game.board[location] = 'x';
+            game.checkBoard();
+        }
+
+        function markO(location) {
+            game.board[location] = 'o';
+            game.checkBoard();
+        }
+
         function markArea(location){
             if (!container.classList.contains('startHidden')) return;
-            if (container.classList.contains('turnO')){
+            if (player.turn == 'o'){
                 if (game.board[location]){
                     return alert('already filled, please try another spot');
                 }
@@ -243,7 +230,10 @@ const display = {
             }
 
             refreshBoard();
-            container.classList.toggle('turnO');
+            if (player.turn == 'o'){
+                player.turn = 'x';
+            } else {player.turn = 'o';}
+            showTurn();
         }
 
         boardTopLeft.addEventListener('click', () => {
